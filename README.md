@@ -1,4 +1,3 @@
-# 💤 LazyVim
+Asdwjure's version of minimal neovim setup (which is not so minimal)
 
-A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
-Refer to the [documentation](https://lazyvim.github.io/installation) to get started.
+Mostly inspired by ThePrimeagen
