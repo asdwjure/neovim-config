@@ -39,7 +39,13 @@ function M.telescope()
     map('n', '<leader>ff', builtin.find_files, opts)
     map('n', '<leader>fg', builtin.live_grep, opts)
     map('n', '<leader>fb', builtin.buffers, opts)
-    map('n', '<leader>fr', builtin.oldfiles, opts)
+
+    -- show only oldfiles under the current working directory
+    map('n', '<leader>fr', function()
+        builtin.oldfiles {
+            cwd = vim.fn.getcwd(),
+        }
+    end, opts)
 
     -- include hidden / no-ignore variants
     map('n', '<leader>fF', function()
