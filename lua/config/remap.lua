@@ -15,6 +15,9 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "=ap", "ma=ap'a")
 vim.keymap.set("n", "<leader>zig", "<cmd>LspRestart<cr>")
 
+-- Press ESC to exit terminal mode (otherwise requires <C-\> <C-n> which is too long to type and life is too short
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+
 -- greatest remap ever
 -- Paste but keep paste buffer intact
 vim.keymap.set("x", "<leader>p", [["_dP]])
@@ -140,5 +143,10 @@ function M.theme()
 end
 
 vim.keymap.set('n', '<leader>ut', M.theme)
+
+-- Toggleterm terminal plugin keymaps
+function M.toggleterm()
+    vim.keymap.set({ "n", "t" }, "<C-_>", "<cmd>ToggleTerm<CR>", { desc = "Toggle Terminal" })
+end
 
 return M
