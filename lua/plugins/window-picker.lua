@@ -7,6 +7,7 @@ return {
     require('window-picker').setup({
       -- you can pass any of the options documented here:
       -- https://github.com/s1n7ax/nvim-window-picker#configuration :contentReference[oaicite:0]{index=0}
+      hint = "floating-big-letter",
       autoselect_one = true,
       include_current_win = false,
       selection_chars = 'FJDKSLA;CMRUEIWOQP',
