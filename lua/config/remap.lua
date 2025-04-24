@@ -23,10 +23,13 @@ vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", { silent = true })
 vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { silent = true })
 
 -- Toggle no-neck-pain
-vim.keymap.set('n', '<leader>cp', '<cmd>NoNeckPain<CR>')
+vim.keymap.set('n', '<leader>np', '<cmd>NoNeckPain<CR>')
 
 -- Close buffer, keep window
 vim.keymap.set("n", "<leader>bd", ":bp | bd #<CR>", { desc = "Kill Buffer (keep layout)" })
+
+-- Select last buffer
+vim.keymap.set("n", "<leader>bb", ":b#<CR>", { desc = "Select last buffer" })
 
 -- Press ESC to exit terminal mode (otherwise requires <C-\> <C-n> which is too long to type and life is too short
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
