@@ -4,6 +4,7 @@ vim.keymap.set("n", "<leader>fe", vim.cmd.Neotree)
 
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
+-- Move selected lines in visual mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
@@ -14,6 +15,15 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "=ap", "ma=ap'a")
 vim.keymap.set("n", "<leader>zig", "<cmd>LspRestart<cr>")
+
+-- Window resizing
+vim.keymap.set("n", "<C-Up>", ":resize +2<CR>", { silent = true })
+vim.keymap.set("n", "<C-Down>", ":resize -2<CR>", { silent = true })
+vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", { silent = true })
+vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { silent = true })
+
+-- Close buffer, keep window
+vim.keymap.set("n", "<leader>bd", ":bp | bd #<CR>", { desc = "Kill Buffer (keep layout)" })
 
 -- Press ESC to exit terminal mode (otherwise requires <C-\> <C-n> which is too long to type and life is too short
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
@@ -94,9 +104,9 @@ function M.lazygit()
     -- edit your LazyGit config
     map('n', '<leader>gC', '<cmd>LazyGitConfig<CR>', opts)
     -- open LazyGit with project‐wide filter UI
-    map('n', '<leader>gf', '<cmd>LazyGitFilter<CR>', opts)
+    map('n', '<leader>gF', '<cmd>LazyGitFilter<CR>', opts)
     -- open LazyGit filtered to current file’s commits
-    map('n', '<leader>gF', '<cmd>LazyGitFilterCurrentFile<CR>', opts)
+    map('n', '<leader>gf', '<cmd>LazyGitFilterCurrentFile<CR>', opts)
 end
 
 --- LSP keybindings (called from lsp-zero's on_attach)
