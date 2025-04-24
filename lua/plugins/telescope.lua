@@ -9,7 +9,7 @@ return {
 				prompt_prefix = '🔍 ',
 				layout_config = {
 					width = 0.85,
-					preview_width = 0.6,
+					preview_width = 0.5,
 				},
 				sorting_strategy = 'ascending',
 			},
