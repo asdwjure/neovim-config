@@ -151,7 +151,7 @@ end
 
 --- Toggle through colorschemes
 function M.theme()
-  local themes = { 'rose-pine', 'dayfox', 'terafox' } -- list all themes to cycle through
+  local themes = { 'dayfox', 'terafox' } -- list all themes to cycle through
   local idx    = (vim.g.theme_idx or 1) % #themes + 1
   vim.g.theme_idx = idx
   vim.cmd('colorscheme ' .. themes[idx])
