@@ -23,7 +23,7 @@ vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", { silent = true })
 vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { silent = true })
 
 -- Toggle no-neck-pain
-vim.keymap.set('n', '<leader>np', '<cmd>NoNeckPain<CR>')
+vim.keymap.set('n', '<leader>un', '<cmd>NoNeckPain<CR>')
 
 -- Close buffer, keep window
 vim.keymap.set("n", "<leader>bd", ":bp | bd #<CR>", { desc = "Kill Buffer (keep layout)" })
