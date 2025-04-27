@@ -10,7 +10,7 @@ return {
         'hrsh7th/nvim-cmp',
         'hrsh7th/cmp-nvim-lsp',
         'L3MON4D3/LuaSnip',
-        -- 'saadparwaiz1/cmp_luasnip', -- bridge cmp <-> luasnip
+        'saadparwaiz1/cmp_luasnip', -- bridge cmp <-> luasnip
     },
     config = function()
         local lsp_zero = require('lsp-zero')
@@ -34,22 +34,23 @@ return {
             ensure_installed = { 'clangd', 'lua_ls','pyright' },
             handlers = {
                 -- clangd setup for big C/C++ codebases (Yocto etc)
-                ['clangd'] = function()
-                    require('lspconfig').clangd.setup({
-                        cmd = {
-                            'clangd',
-                            '--background-index',
-                            '--clang-tidy',
-                            '--completion-style=detailed',
-                            -- if you have a Yocto cross‐compiler, point query-driver at it:
-                            -- '--query-driver=/path/to/yocto/sysroots/.../bin/*-gcc'
-                        },
-                        filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
-                        root_dir = util.root_pattern('compile_commands.json', 'Makefile', '.git'),
-                        -- force a single offset_encoding to avoid warnings
-                        -- offset_encodings = { 'utf-16' },
-                    })
-                end,
+                -- ['clangd'] = function()
+                --     require('lspconfig').clangd.setup({
+                --         cmd = {
+                --             'clangd',
+                --             '--background-index',
+                --             '--clang-tidy',
+                --             '--completion-style=detailed',
+                --             '--compile-commands-dir=' .. vim.fn.getcwd(),  -- point at your project root
+                --             -- if you have a Yocto cross‐compiler, point query-driver at it:
+                --             -- '--query-driver=/path/to/yocto/sysroots/.../bin/*-gcc'
+                --         },
+                --         filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
+                --         root_dir = util.root_pattern('compile_commands.json', 'Makefile', '.git'),
+                --         -- force a single offset_encoding to avoid warnings
+                --         -- offset_encodings = { 'utf-16' },
+                --     })
+                -- end,
 
                 -- Python LSP
                 ['pyright'] = function()
@@ -108,6 +109,18 @@ return {
                 { name = 'luasnip' },
                 { name = 'buffer' },
                 { name = 'path' },
+            },
+            sorting = {
+                comparators = {
+                    cmp.config.compare.offset,
+                    cmp.config.compare.exact,
+                    cmp.config.compare.recently_used,
+                    require("clangd_extensions.cmp_scores"),
+                    cmp.config.compare.kind,
+                    cmp.config.compare.sort_text,
+                    cmp.config.compare.length,
+                    cmp.config.compare.order,
+                },
             },
             formatting = lsp_zero.cmp_format(),
             experimental = {
