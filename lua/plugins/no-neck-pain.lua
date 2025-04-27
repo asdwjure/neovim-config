@@ -1,6 +1,6 @@
 return {
     'shortcuts/no-neck-pain.nvim',
-    version = '*',    -- use latest tag
+    version = '2.*',
     event = "VimEnter",
     priority = 1, -- very low priority
     config = function()
