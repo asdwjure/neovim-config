@@ -17,10 +17,10 @@ vim.keymap.set("n", "=ap", "ma=ap'a")
 vim.keymap.set("n", "<leader>zig", "<cmd>LspRestart<cr>")
 
 -- Window resizing
-vim.keymap.set("n", "<C-Up>", ":resize +2<CR>", { silent = true })
-vim.keymap.set("n", "<C-Down>", ":resize -2<CR>", { silent = true })
-vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", { silent = true })
-vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { silent = true })
+vim.keymap.set("n", "<C-Up>", ":resize +2<CR>", { silent = false })
+vim.keymap.set("n", "<C-Down>", ":resize -2<CR>", { silent = false })
+vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", { silent = false })
+vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { silent = false })
 
 -- Toggle no-neck-pain
 vim.keymap.set('n', '<leader>un', '<cmd>NoNeckPain<CR>')
@@ -51,7 +51,7 @@ local M = {}
 --- Set up Telescope keybindings
 function M.telescope()
     local builtin = require('telescope.builtin')
-    local opts = { noremap = true, silent = true }
+    local opts = { noremap = true, silent = false }
     local map = vim.keymap.set
 
     -- basic pickers
@@ -101,7 +101,7 @@ end
 
 function M.lazygit()
     local map  = vim.keymap.set
-    local opts = { noremap = true, silent = true }
+    local opts = { noremap = true, silent = false }
 
     -- open LazyGit in the current working directory
     map('n', '<leader>gg', '<cmd>LazyGit<CR>', opts)
@@ -117,7 +117,7 @@ end
 
 --- LSP keybindings (called from lsp-zero's on_attach)
 function M.lsp(bufnr)
-    local opts = { noremap = true, silent = true, buffer = bufnr }
+    local opts = { noremap = true, silent = false, buffer = bufnr }
     local map  = vim.keymap.set
 
     map('n', '<leader>cd', vim.lsp.buf.definition, opts)
@@ -138,7 +138,7 @@ end
 function M.window_picker()
     local wp   = require('window-picker')
     local map  = vim.keymap.set
-    local opts = { noremap = true, silent = true }
+    local opts = { noremap = true, silent = false }
 
     map('n', '<leader>wp', function()
         -- pop up the picker, get the chosen window id
