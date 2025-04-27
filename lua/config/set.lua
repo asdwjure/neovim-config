@@ -27,3 +27,29 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "120"
+
+
+----------------
+---Hightlight text when yanking
+local function set_yank_hl()
+  vim.api.nvim_set_hl(0, 'YankHighlight', { bg = '#FF8C00', fg = 'NONE' })
+end
+
+set_yank_hl()
+
+vim.api.nvim_create_autocmd('ColorScheme', {
+  pattern = '*',
+  callback = set_yank_hl,
+})
+
+local yank_grp = vim.api.nvim_create_augroup('YankHighlightGrp', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+  group = yank_grp,
+  callback = function()
+    vim.highlight.on_yank {
+      higroup = 'YankHighlight',
+      timeout = 150,
+    }
+  end,
+})
+----------------
